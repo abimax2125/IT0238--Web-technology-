@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest Odd Number</title>
+</head>
+<body>
+    <input type="text" id="numbers" placeholder="Enter numbers separated by commas">
+    <button onclick="findNearestOdd()">Find Nearest Odd</button>
+    <p id="result"></p>
+
+    <script>
+        function findNearestOdd() {
+            const numbers = document.getElementById("numbers").value.split(",").map(n => parseInt(n));
+            const result = numbers.map(n => n % 2 === 0 ? n - 1 : n);
+            document.getElementById("result").innerText = result.join(", ");
+        }
+    </script>
+</body>
+</html>
