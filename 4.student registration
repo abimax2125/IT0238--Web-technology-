@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+    <form action="registerStudent" method="POST">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="rollNumber">Roll Number: </label>
+        <input type="text" id="rollNumber" name="rollNumber" required><br><br>
+        
+        <label for="course">Course: </label>
+        <input type="text" id="course" name="course" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class StudentRegistrationServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Setting the content type for the response
+        response.setContentType("text/html");
+        
+        // Getting the student details from the form
+        String name = request.getParameter("name");
+        String rollNumber = request.getParameter("rollNumber");
+        String course = request.getParameter("course");
+
+        // Writing the student details back to the client
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Student Registration Details</h2>");
+        out.println("<p><strong>Name:</strong> " + name + "</p>");
+        out.println("<p><strong>Roll Number:</strong> " + rollNumber + "</p>");
+        out.println("<p><strong>Course:</strong> " + course + "</p>");
+        out.println("</body></html>");
+    }
+}
